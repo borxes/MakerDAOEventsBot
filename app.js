@@ -32,8 +32,7 @@ const buildMessage = node => {
     `Debt (in _DAI_): *${formatNumber(art, 2)}*\n` +
     `Collateral (in _PETH_): *${formatNumber(ink, 2)}*\n` +
     `Collateralization ratio: *${formatNumber(ratio, 2)}%*\n` +
-    `Collateral value (in _$USD_): ${formatNumber(tab, 2)}\n` +
-    `Timestamp: ${moment(time).fromNow()}`;
+    `Collateral value (in _$USD_): ${formatNumber(tab, 2)}\n`;
   return str;
 };
 
