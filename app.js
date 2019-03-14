@@ -78,12 +78,16 @@ const explainer = node => {
     case 'DRAW':
       result +=
         `Some DAI has been drawn from CDP ${id}, so the total debt now is ` +
-        `${prettyArt} against ${prettyInk} PETH collateral. ${riskify(ratio)}`;
+        `${prettyArt} DAI against ${prettyInk} PETH collateral. ${riskify(
+          ratio
+        )}`;
       break;
     case 'WIPE':
       result +=
         `Some DAI has been repaid to CDP ${id}, so the total debt now is ` +
-        `${prettyArt} against ${prettyInk} PETH collateral. ${riskify(ratio)}`;
+        `${prettyArt} DAI against ${prettyInk} PETH collateral. ${riskify(
+          ratio
+        )}`;
       break;
     case 'BITE':
       result +=
