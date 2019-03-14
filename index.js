@@ -46,7 +46,7 @@ const explainer = node => {
   ];
 
   const riskify = ratio => {
-    const riskCutoff = 180;
+    const riskCutoff = 190;
     return ratio === '0'
       ? ''
       : `The collateralization ratio is ${prettyRatio}% ` +
@@ -103,18 +103,19 @@ const explainer = node => {
 };
 
 const mainTask = () => {
+  console.log(`${moment().format()}: Main Task running`);
   const actsQuery = query(UPDATE_FREQ);
   client.request(actsQuery).then(data => {
+    console.log(`Received gql data: ${JSON.stringify(data)}`);
     data.allCupActs.nodes.forEach(node => {
       const message = buildMessage(node) + explainer(node);
-      console.log(message);
       telegram
         .sendMessage('@makerdaoevents', message, { parse_mode: 'Markdown' })
         .then(data => {
           console.log(`Poasting ${message}`);
         })
         .catch(err => {
-          console.log(err);
+          console.log(`Telegram error: ${err}`);
         });
     });
   });
